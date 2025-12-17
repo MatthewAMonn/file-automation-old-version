@@ -1,5 +1,6 @@
 """
-2nd version of the program. Flushes out exception use cases.
+3rd version of the program. Switch from using shutil to pathlib. Reason being there is an 
+issue with shutil when moving a file that 
 """
 
 # Provides a way for file and directory operations, such as copying and moving.
