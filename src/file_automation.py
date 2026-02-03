@@ -38,18 +38,25 @@ def move_file(source_file: str, source_directory: Path, destination_directory: P
     if check_directory_is_valid(destination_directory):
         source_full_path = source_directory / source_file
         destination_full_path = destination_directory / source_file
+        console_message = ""
 
         try:
             source_full_path.rename(destination_full_path)
-            print(
-                f"Moved file '{source_file}' successfully to '{destination_directory}'.")
+            console_message = f"Moved file '{source_file}' successfully to '{destination_directory}'."
+            print(console_message)
+            return console_message
         except FileNotFoundError:
-            print(
-                f"Error: Source file '{source_file}' does not exist in directory '{source_directory}'.")
+            console_message = f"Error: Source file '{source_file}' does not exist in directory '{source_directory}'."
+            print(console_message)
+            return console_message
         except PermissionError as e:
-            print("Permission error has occured. Please adjust permission settings for file/destination and that file is closed.")
+            console_message = "Permission error has occured. Please adjust permission settings for file/destination and that file is closed."
+            print(console_message)
+            return console_message
         except Exception as e:
-            print(f"Unknown error has occured: {e}")
+            console_message = f"Unknown error has occured: {e}"
+            print(console_message)
+            return console_message
 
 
 move_file(source_file, source_directory, destination_directory)
